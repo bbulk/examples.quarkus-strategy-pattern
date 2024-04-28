@@ -16,7 +16,7 @@ public class GreetingService {
                 .filter(strategy -> strategy.appliesTo(language))
                 .findAny()
                 .map(GreetingStrategy::greet)
-                .orElseThrow(() -> new RuntimeException(language + " not supported!"));
+                .orElseThrow(() -> new IllegalArgumentException(language + " not supported!"));
     }
 
 }
