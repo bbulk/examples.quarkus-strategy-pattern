@@ -24,8 +24,8 @@ public class GreetingProducer {
     @RequestScoped
     @FromQueryParams
     public GreetingStrategy getInstanceFromQueryContext() {
-        List<String> languageList = uriInfo.getQueryParameters().get("lang");
-        String language = languageList == null ? DEFAULT_LANGUAGE : languageList.getFirst();
+        List<String> languageParameters = uriInfo.getQueryParameters().get("lang");
+        String language = languageParameters == null ? DEFAULT_LANGUAGE : languageParameters.getFirst();
         return strategies.stream()
                 .filter(strategy -> strategy.appliesTo(language))
                 .findAny()
